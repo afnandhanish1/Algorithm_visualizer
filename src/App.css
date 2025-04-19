@@ -1,0 +1,323 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-content {
+  margin-left: 200px;
+  margin-top: 60px;
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Message Styles */
+.message {
+  margin: 20px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-height: 2em;
+  text-align: center;
+  width: 100%;
+}
+
+/* Grid Visualization Styles */
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.node {
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgb(175, 216, 248);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.node-start {
+  background-color: green;
+  animation: pulse 2s infinite;
+}
+
+.node-finish {
+  background-color: red;
+  animation: pulse 2s infinite;
+}
+
+.node-wall {
+  background-color: rgb(12, 53, 71);
+}
+
+.node-visited {
+  animation-name: visitedAnimation;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.node-path {
+  animation-name: shortestPath;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* Chessboard Styles */
+.chessboard {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+.chessboard-row {
+  display: flex;
+}
+
+.chessboard-cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.chessboard-cell.light {
+  background-color: #f0d9b5;
+}
+
+.chessboard-cell.dark {
+  background-color: #b58863;
+}
+
+.chessboard-cell.active {
+  background-color: rgba(97, 218, 251, 0.5);
+}
+
+.chessboard-cell.conflict {
+  background-color: rgba(255, 99, 71, 0.7);
+}
+
+.queen {
+  font-size: 36px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Controls Styles - General */
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.controls button {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.controls button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background-color: #45a049;
+}
+
+.controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.controls button.active {
+  background-color: #2196F3;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #2196F3;
+}
+
+.visualize-btn {
+  background-color: #2196F3 !important;
+}
+
+.visualize-btn:hover:not(:disabled) {
+  background-color: #0b7dda !important;
+}
+
+/* N-Queens Specific Controls */
+.queens-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.queens-controls button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  min-width: 200px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.queens-controls button:hover {
+  background-color: #45a049;
+}
+
+/* Control Groups */
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.speed-control input {
+  flex-grow: 1;
+}
+
+.toggle-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Array Input Styles */
+.array-input {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.array-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Animations */
+@keyframes visitedAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: rgba(0, 0, 66, 0.75);
+    border-radius: 100%;
+  }
+  50% {
+    background-color: rgba(17, 104, 217, 0.75);
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: rgba(0, 217, 159, 0.75);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgba(0, 190, 218, 0.75);
+  }
+}
+
+@keyframes shortestPath {
+  0% {
+    transform: scale(0.6);
+    background-color: rgb(255, 254, 106);
+  }
+  50% {
+    transform: scale(1.2);
+    background-color: rgb(255, 254, 106);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgb(255, 254, 106);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+  
+  .node {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .chessboard-cell {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .queen {
+    font-size: 30px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .controls button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .queens-controls {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .queens-controls button {
+    min-width: 150px;
+    padding: 8px 16px;
+  }
+}

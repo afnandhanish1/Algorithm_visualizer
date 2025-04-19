@@ -1,0 +1,42 @@
+:root {
+  /* Sorting colors */
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #61dafb;
+  --secondary-color: #282c34;
+  --highlight-color: #ff6b6b;
+  --merge-color: #6bff6b;
+
+  /* Pathfinding colors */
+  --grid-border: #d1d1d1;
+  --start-node: #00b894;
+  --finish-node: #e84393;
+  --wall-node: #636e72;
+  --visited-1: rgba(0, 190, 218, 0.75);
+  --visited-2: rgba(0, 180, 216, 0.75);
+  --visited-3: rgba(0, 119, 182, 0.75);
+  --visited-4: rgba(9, 92, 139, 0.75);
+  --path-1: #ffeaa7;
+  --path-2: #fdcb6e;
+  --path-3: #e17055;
+}
+
+.dark-theme {
+  --bg-color: #282c34;
+  --text-color: #ffffff;
+  --primary-color: #61dafb;
+  --secondary-color: #20232a;
+  --highlight-color: #ff6b6b;
+  --merge-color: #4CAF50;
+  --grid-border: #555;
+  --start-node: #00b894;
+  --finish-node: #e84393;
+  --wall-node: #2d3436;
+  --visited-1: rgba(0, 190, 218, 0.75);
+  --visited-2: rgba(0, 180, 216, 0.75);
+  --visited-3: rgba(0, 119, 182, 0.75);
+  --visited-4: rgba(9, 92, 139, 0.75);
+  --path-1: #ffeaa7;
+  --path-2: #fdcb6e;
+  --path-3: #e17055;
+}

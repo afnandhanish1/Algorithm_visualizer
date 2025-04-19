@@ -1,0 +1,30 @@
+.array-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .array-element {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .array-element.swapping {
+    transform: translateY(-20px);
+    background-color: var(--highlight-color);
+  }
+  
+  .array-element.merging {
+    background-color: var(--merge-color);
+  }
